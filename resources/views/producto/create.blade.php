@@ -54,6 +54,14 @@
                         <small class="text-danger">{{'*'.$message}}</small>
                         @enderror
                     </div>
+                    <!---Precio---->
+                    <div class="col-12">
+                        <label for="precio_venta" class="form-label">Descripción:</label>
+                        <textarea name="precio_venta" id="precio_venta" rows="3" class="form-control">{{old('precio_venta')}}</textarea>
+                        @error('precio_venta')
+                        <small class="text-danger">{{'*'.$message}}</small>
+                        @enderror
+                    </div>
 
                     <!---Fecha de vencimiento---->
                     <div class="col-md-6">

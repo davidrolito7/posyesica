@@ -57,7 +57,7 @@ class ProductoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductoRequest $request)
+    public function store(\Illuminate\Http\Request $request)
     {
         //dd($request);
         try {
@@ -74,6 +74,8 @@ class ProductoController extends Controller
                 'codigo' => $request->codigo,
                 'nombre' => $request->nombre,
                 'descripcion' => $request->descripcion,
+                'precio_venta' => $request->precio_venta,
+                'stock' => $request->stock,
                 'fecha_vencimiento' => $request->fecha_vencimiento,
                 'img_path' => $name,
                 'marca_id' => $request->marca_id,
@@ -129,7 +131,7 @@ class ProductoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductoRequest $request, Producto $producto)
+    public function update(\Illuminate\Http\Request $request, Producto $producto)
     {
         try{
             DB::beginTransaction();
