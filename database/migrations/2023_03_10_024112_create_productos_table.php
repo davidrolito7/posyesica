@@ -25,6 +25,8 @@ return new class extends Migration
             $table->foreignId('marca_id')->constrained('marcas')->onDelete('cascade');
             $table->foreignId('presentacione_id')->constrained('presentaciones')->onDelete('cascade');
             $table->timestamps();
+            $table->decimal('precio_venta', 10, 2)->nullable();
+
         });
     }
 

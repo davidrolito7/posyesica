@@ -60,11 +60,10 @@ class compraController extends Controller
 
             //Llenar tabla compra_producto
             //1.Recuperar los arrays
-            $arrayProducto_id = $request->get('arrayidproducto');
-            $arrayCantidad = $request->get('arraycantidad');
-            $arrayPrecioCompra = $request->get('arraypreciocompra');
-            $arrayPrecioVenta = $request->get('arrayprecioventa');
-
+            $arrayProducto_id = $request['arrayidproducto'];
+            $arrayCantidad = $request['arraycantidad'];
+            $arrayPrecioCompra = $request['arraypreciocompra'];
+            $arrayPrecioVenta = $request['arrayprecioventa'];
             //2.Realizar el llenado
             $siseArray = count($arrayProducto_id);
             $cont = 0;
@@ -83,10 +82,11 @@ class compraController extends Controller
                 $stockNuevo = intval($arrayCantidad[$cont]);
 
                 DB::table('productos')
-                ->where('id',$producto->id)
-                ->update([
-                    'stock' => $stockActual + $stockNuevo
-                ]);
+                    ->where('id', $producto->id)
+                    ->update([
+                        'stock' => $stockActual + $stockNuevo,
+                        'precio_venta' => $arrayPrecioVenta[$cont] // <-- Agrega esta línea
+                    ]);
 
                 $cont++;
 
